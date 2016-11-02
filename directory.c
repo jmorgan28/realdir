@@ -19,23 +19,39 @@ typedef struct files{
 int main(){
   struct files *temp =  (struct files *) malloc(sizeof(struct files));
   struct files *bin = temp;
+  struct files *bin1 = temp;
   DIR *dir = opendir(".");
-  char *str = "";
-  while(str != NULL){
-    //temp->name = readdir(dir)->d_name;
-    //str = temp->name;
-     temp->next = (struct files *) malloc(sizeof(struct files));
-     temp = temp->next;
+  struct dirent *store = readdir(dir);
+  int i = 1;
+
+
+
+
+  while(store!= NULL){
+    temp->name = store->d_name;
+    printf("%s\n", temp->name);
+    //str = readdir(dir)->d_name;
+    temp->next = (struct files *) malloc(sizeof(struct files));
+    temp = temp->next;
+    store = readdir(dir);
   }
 
-  //while ( bin ) {
-  // bin = bin->next;
-  //free(temp);
-  //temp = bin;    
-  //}
-  //bin = NULL;
 
-    //freeeee*/
+
+
+
+
+
+
+  
+  while ( bin ) {
+    bin = bin->next;
+    free(bin1);
+    bin1 = bin;    
+  }
+  bin = NULL;
+  printf("tjat\n");
+    //close 
   return 0;
 
 }
