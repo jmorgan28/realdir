@@ -13,7 +13,7 @@
 
 int main(){
   printf("Statistics for directory:\n");
-  printf("Total Diectory Size: ");
+  printf("Total Directory Size: ");
   int total = 0;
 
 
