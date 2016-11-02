@@ -22,13 +22,16 @@ int main(){
   struct dirent *store = readdir(dir);
   
   while(store!= NULL){
+    if(store->d_type == 8){
     int fd = open( store->d_name , O_RDWR );
     struct stat *buff = (struct stat *)malloc(sizeof(struct stat));
     fstat( fd , buff );
     total += buff->st_size;
     close(fd);
     free(buff);
+    }
     store = readdir(dir);
+    
   }
   closedir(dir);
 
