@@ -42,7 +42,7 @@ int main(){
 
   printf("Directories:\n");
   
-  while(store!= NULL)
+  while(store!= NULL){
     if(store->d_type == 4){
       printf("\t%s\n", store->d_name);
     }
