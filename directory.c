@@ -19,7 +19,21 @@ int main(){
   
   while(store!= NULL){
     if(store->d_type == 4){
-      printf("%s\n", store->d_name);
+      printf("\t%s\n", store->d_name);
+    }
+    store = readdir(dir);
+  }
+  closedir(dir);
+
+
+  dir = opendir(".");
+  store = readdir(dir);
+
+  printf("Regular files:\n");
+  
+  while(store!= NULL){
+    if(store->d_type == 8){
+      printf("\t%s\n", store->d_name);
     }
     store = readdir(dir);
   }
