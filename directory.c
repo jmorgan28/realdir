@@ -18,6 +18,7 @@ typedef struct files{
 
 int main(){
   struct files *temp =  (struct files *) malloc(sizeof(struct files));
+  struct files *sec = temp;
   struct files *bin = temp;
   struct files *bin1 = temp;
   DIR *dir = opendir(".");
@@ -35,8 +36,21 @@ int main(){
     temp = temp->next;
     store = readdir(dir);
   }
+  closedir(dir);
 
+  dir =opendir(".");
+  store = readdir(dir);
 
+   while(store!= NULL){
+     if(store->d_type == DT_DIR){
+       sec->binary == 1;
+     } 
+     printf("%d\n", store->d_type);
+     //str = readdir(dir)->d_name;
+     sec = sec->next;
+     store = readdir(dir);
+   }
+   closedir(dir);
 
 
 
